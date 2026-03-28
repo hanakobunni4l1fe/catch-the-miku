@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catch the Miku</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" type="image/x-icon" href="./public/miku-sekai.png">
+  </head>
+  <body class="selection:bg-[#66f4dc]/30 selection:text-white">
+    <div class="page-effects pointer-events-none fixed inset-y-0 left-[-6rem] hidden w-[22rem] items-center opacity-15 mix-blend-screen lg:flex">
+      <img src="./public/miku-run.png" alt="" class="w-full -rotate-12" />
+    </div>
+    <div class="page-effects pointer-events-none fixed inset-y-0 right-[-7rem] hidden w-[24rem] items-center opacity-15 mix-blend-screen lg:flex">
+      <img src="./public/miku-leek.png" alt="" class="w-full rotate-12" />
+    </div>
+
+    <main class="relative mx-auto grid w-[min(1280px,calc(100%-24px))] gap-6 px-0 py-6 lg:grid-cols-[minmax(350px,0.95fr)_minmax(430px,1.05fr)]">
+      <section class="glass-panel panel-grid px-5 py-6 sm:px-7 sm:py-8">
+        <div class="bg-fx pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_86%_10%,rgba(102,244,220,0.14),transparent_16%),radial-gradient(circle_at_12%_56%,rgba(116,211,255,0.1),transparent_18%)]"></div>
+        <div class="bg-fx absolute left-5 right-5 top-0 h-2.5 rounded-b-[18px] bg-[linear-gradient(90deg,#66f4dc_0_24%,#ff74b7_24%_45%,#ffe56a_45%_67%,#74d3ff_67%_100%)]"></div>
+        <div class="bg-fx absolute right-0 top-32 h-52 w-4 rounded-l-[18px] bg-[linear-gradient(180deg,#ff74b7,#66f4dc,#74d3ff)]"></div>
+
+        <div class="absolute left-3 top-3 z-20 rounded-2xl border border-white/25 bg-[linear-gradient(135deg,#ffffff,#c8ffe3_35%,#66f4dc)] px-3 py-2 text-[0.78rem] font-black tracking-[0.12em] text-[#071323] shadow-[0_14px_22px_rgba(0,0,0,0.22)] rotate-[-6deg]">
+          01
+        </div>
+        <div class="absolute right-3 top-3 z-20 rounded-2xl border border-white/25 bg-[linear-gradient(135deg,#fff0f6,#ffc4dd_35%,#ff74b7)] px-3 py-2 text-[0.78rem] font-black tracking-[0.12em] text-[#2a0015] shadow-[0_14px_22px_rgba(0,0,0,0.22)] rotate-[6deg]">
+          39
+        </div>
+
+        <div class="relative z-10 mt-12 rounded-[24px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)),rgba(10,24,41,0.84)] p-4 shadow-[0_14px_24px_rgba(0,0,0,0.18)]">
+          <div class="grid gap-3 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div class="grid gap-2 sm:grid-cols-2">
+              <button id="help-button" class="top-chip bg-[linear-gradient(135deg,#fffef6,#ffe56a)] text-[#071323]" type="button">
+                Miku Guide
+              </button>
+              <button
+                id="fx-button"
+                class="top-chip bg-[linear-gradient(135deg,rgba(255,255,255,0.09),rgba(255,255,255,0.04)),rgba(255,255,255,0.04)] text-white"
+                type="button"
+                aria-pressed="true"
+              >
+                Concert Glow: On
+              </button>
+            </div>
+
+            <div class="grid gap-2 sm:grid-cols-2">
+              <span class="top-chip bg-[linear-gradient(135deg,#ffffff,#66f4dc)] text-[#071323]">Hatsune Mode</span>
+              <span class="top-chip bg-[linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.04)),rgba(12,26,44,0.92)] text-slate-100">CV01 / 39</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="relative z-10 mt-7 text-xs font-black uppercase tracking-[0.26em] text-[#66f4dc]">
+          Vocaloid Chibi Chase
+        </p>
+        <h1 class="title-shadow relative z-10 mt-3 bg-[linear-gradient(180deg,#ffffff_0%,#d6fdff_46%,#8bf8ea_100%)] bg-clip-text text-[clamp(3rem,9vw,6rem)] leading-[0.88] font-black text-transparent">
+          Catch the<br />Miku
+        </h1>
+        <p class="relative z-10 mt-5 max-w-[30rem] text-lg leading-8 text-slate-100">
+          Chase Hatsune Miku across the stage, catch her turquoise twin-tail
+          dash, and stack the highest score before the encore ends.
+        </p>
+
+        <div class="stage-fx relative z-10 mt-5 flex h-14 w-full max-w-[24rem] items-end gap-1.5 rounded-[20px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)),linear-gradient(90deg,rgba(102,244,220,0.1),rgba(255,116,183,0.08))] px-3 py-2 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.03)]">
+          <span class="bar-pulse h-[22%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#66f4dc)]"></span>
+          <span class="bar-pulse h-[30%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#74d3ff)]" style="animation-delay: 90ms"></span>
+          <span class="bar-pulse h-[35%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#fff8d8,#ffe56a)]" style="animation-delay: 180ms"></span>
+          <span class="bar-pulse h-[28%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#74d3ff)]" style="animation-delay: 270ms"></span>
+          <span class="bar-pulse h-[34%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#66f4dc)]" style="animation-delay: 360ms"></span>
+          <span class="bar-pulse h-[26%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#fff8d8,#ffe56a)]" style="animation-delay: 450ms"></span>
+          <span class="bar-pulse h-[22%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#66f4dc)]" style="animation-delay: 540ms"></span>
+          <span class="bar-pulse h-[18%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#74d3ff)]" style="animation-delay: 630ms"></span>
+          <span class="bar-pulse h-[16%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#fff8d8,#ffe56a)]" style="animation-delay: 720ms"></span>
+          <span class="bar-pulse h-[14%] min-w-[8px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#74d3ff)]" style="animation-delay: 810ms"></span>
+        </div>
+
+        <div class="relative z-10 mt-5 flex flex-wrap items-center gap-2">
+          <span class="text-[0.72rem] font-black uppercase tracking-[0.2em] text-slate-300">Fan Chant</span>
+          <span class="fan-pill bg-[linear-gradient(135deg,#f0fffb,#66f4dc)] text-[#071323]">MI</span>
+          <span class="fan-pill bg-[linear-gradient(135deg,#f0fffb,#66f4dc)] text-[#071323]">KU</span>
+          <span class="fan-pill bg-[linear-gradient(135deg,#fff0f6,#ff74b7)] text-[#420126]">39</span>
+          <span class="fan-pill bg-[linear-gradient(135deg,#fff8d8,#ffe56a)] text-[#4c3800]">LEEK</span>
+        </div>
+
+        <div class="relative z-10 mt-6 flex flex-wrap gap-3" aria-label="Game mode buttons">
+          <button class="mode-button active bg-[linear-gradient(135deg,#fff6c9,#ffe56a)] text-[#483600] rotate-[-4deg]" data-mode="turbo" type="button">
+            Twin-Tail Tempo
+          </button>
+          <button class="mode-button bg-[linear-gradient(135deg,#ffeaf3,#ff74b7)] text-[#4a0827] rotate-[2deg]" data-mode="leek" type="button">
+            Leek Fever
+          </button>
+          <button class="mode-button bg-[linear-gradient(135deg,#edf9ff,#74d3ff)] text-[#042439] rotate-[-3deg]" data-mode="idol" type="button">
+            39 Rush
+          </button>
+        </div>
+
+        <section class="relative z-10 mt-6 grid gap-5 rounded-[30px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03)),linear-gradient(135deg,rgba(102,244,220,0.11),rgba(255,116,183,0.11)),rgba(28,44,72,0.96)] p-5 shadow-[0_20px_35px_rgba(0,0,0,0.18)] lg:grid-cols-[minmax(180px,235px)_1fr]" aria-label="Miku spotlight">
+          <div class="hero-frame relative grid min-h-[240px] place-items-center overflow-hidden rounded-[28px] border border-[#66f4dc]/20">
+            <div class="pointer-events-none absolute inset-3 rounded-[24px] border-2 border-white/10"></div>
+            <div class="pointer-events-none absolute h-[9.4rem] w-[9.4rem] rounded-full border-2 border-[#66f4dc]/35"></div>
+            <div class="pointer-events-none absolute h-[12.8rem] w-[12.8rem] rounded-full border-2 border-[#ff74b7]/25"></div>
+            <span class="pointer-events-none absolute left-5 top-5 h-5 w-5 bg-[#ffe56a] [clip-path:polygon(50%_0%,62%_35%,100%_50%,62%_65%,50%_100%,38%_65%,0%_50%,38%_35%)]"></span>
+            <span class="pointer-events-none absolute bottom-5 right-5 h-5 w-5 bg-[#ff74b7] [clip-path:polygon(50%_0%,62%_35%,100%_50%,62%_65%,50%_100%,38%_65%,0%_50%,38%_35%)]"></span>
+            <img src="./public/miku-happy.png" alt="Chibi Hatsune Miku smiling" class="relative z-10 w-[min(84%,200px)] drop-shadow-[0_18px_22px_rgba(0,0,0,0.34)]" />
+            <div class="absolute right-3 top-3 grid h-14 w-14 place-items-center rounded-full border-2 border-white/25 bg-[linear-gradient(135deg,#fff8d5,#ffe56a)] text-lg font-black text-[#071323] shadow-[0_10px_18px_rgba(0,0,0,0.22)]">
+              39
+            </div>
+          </div>
+
+          <div class="grid gap-3">
+            <p class="text-xs font-black uppercase tracking-[0.22em] text-[#74d3ff]">Hatsune Miku</p>
+            <h2 class="heavy-shadow text-[clamp(1.8rem,4vw,2.7rem)] leading-[1.02] font-black">
+              The turquoise idol with unstoppable chibi energy
+            </h2>
+            <p class="max-w-[36rem] text-base leading-7 text-white">
+              Vocaloid icon, glowing sleeves, candy-pop colors, and a tiny
+              superstar sprinting through your stage like it is her encore.
+            </p>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="hero-tag bg-[linear-gradient(135deg,#f0fffb,#66f4dc)] text-[#071323]">01 Diva</span>
+              <span class="hero-tag bg-[linear-gradient(135deg,#fff8d8,#ffe56a)] text-[#463400]">Leek Bonus</span>
+              <span class="hero-tag bg-[linear-gradient(135deg,#fff0f6,#ff74b7)] text-[#390521]">39 Beat</span>
+            </div>
+
+            <div class="flex flex-wrap gap-3 pt-1">
+              <div class="relative min-w-[150px] overflow-hidden rounded-[20px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03)),rgba(255,255,255,0.05)] px-4 py-3">
+                <span class="text-[0.72rem] font-black uppercase tracking-[0.18em] text-slate-300">Signature</span>
+                <strong class="mt-2 block text-base font-black">Twin-Tails + Tie</strong>
+              </div>
+              <div class="relative min-w-[150px] overflow-hidden rounded-[20px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03)),rgba(255,255,255,0.05)] px-4 py-3">
+                <span class="text-[0.72rem] font-black uppercase tracking-[0.18em] text-slate-300">Aura</span>
+                <strong class="mt-2 block text-base font-black">Neon Synth Pop</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="relative z-10 mt-4 grid gap-3">
+          <button class="info-card info-button" data-info="how" type="button">
+            <span class="pl-3 text-xs font-black uppercase tracking-[0.22em] text-white">Catch the Diva</span>
+            <p class="mt-3 pl-3 text-sm leading-7 text-slate-100">
+              Catch Miku before she slips offstage. Every catch makes her next entrance faster.
+            </p>
+          </button>
+          <button class="info-card info-button" data-info="bonus" type="button">
+            <span class="pl-3 text-xs font-black uppercase tracking-[0.22em] text-white">Leek Bonus</span>
+            <p class="mt-3 pl-3 text-sm leading-7 text-slate-100">
+              When Miku arrives with her leek, each catch turns into a stronger bonus hit.
+            </p>
+          </button>
+          <button class="info-card info-button" data-info="stage" type="button">
+            <span class="pl-3 text-xs font-black uppercase tracking-[0.22em] text-white">Miku Stage</span>
+            <p class="mt-3 pl-3 text-sm leading-7 text-slate-100">
+              Think 39 chants, teal lights, idol posters, and a synth-pop concert running wild behind the game.
+            </p>
+          </button>
+        </div>
+      </section>
+
+      <section class="glass-panel panel-grid px-4 py-4 sm:px-5 sm:py-5">
+        <div class="bg-fx pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(102,244,220,0.04),transparent_30%),linear-gradient(225deg,rgba(255,116,183,0.04),transparent_30%)]"></div>
+
+        <div class="relative z-10 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-start">
+          <div class="rounded-[24px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)),linear-gradient(90deg,rgba(102,244,220,0.11),rgba(255,116,183,0.08))] px-5 py-4 shadow-[0_12px_20px_rgba(0,0,0,0.18)]">
+            <p class="text-[1rem] font-black uppercase tracking-[0.08em] text-white">Hatsune Miku Live Stage</p>
+            <p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-[#fff1a6]">Miku on the run</p>
+          </div>
+
+          <div class="flex gap-3 lg:justify-end">
+            <button id="pause-button" class="top-chip bg-[linear-gradient(135deg,#fff0f6,#ffc9df_34%,#ff74b7)] text-[#2d0015]" type="button">
+              Pause Show
+            </button>
+          </div>
+        </div>
+
+        <header class="relative z-10 mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <div class="hud-card">
+            <span class="text-xs font-black uppercase tracking-[0.18em] text-white/90">Score</span>
+            <strong id="score" class="heavy-shadow mt-2 block text-[clamp(1.7rem,3vw,2.15rem)] font-black">0</strong>
+          </div>
+          <div class="hud-card">
+            <span class="text-xs font-black uppercase tracking-[0.18em] text-white/90">High Score</span>
+            <strong id="high-score" class="heavy-shadow mt-2 block text-[clamp(1.7rem,3vw,2.15rem)] font-black">0</strong>
+          </div>
+          <div class="hud-card">
+            <span class="text-xs font-black uppercase tracking-[0.18em] text-white/90">Time</span>
+            <strong id="time" class="heavy-shadow mt-2 block text-[clamp(1.7rem,3vw,2.15rem)] font-black">30</strong>
+          </div>
+          <div class="hud-card">
+            <span class="text-xs font-black uppercase tracking-[0.18em] text-white/90">Streak</span>
+            <strong id="streak" class="heavy-shadow mt-2 block text-[clamp(1.7rem,3vw,2.15rem)] font-black">0</strong>
+          </div>
+        </header>
+
+        <div class="relative z-10 mt-4">
+          <div class="stage-fx pointer-events-none absolute inset-[-10px] rounded-[38px] bg-[linear-gradient(135deg,rgba(102,244,220,0.2),rgba(255,116,183,0.14),rgba(255,229,106,0.12))] opacity-75 blur-[2px]"></div>
+
+          <div id="arena" class="overlay-parent stage-background relative min-h-[600px] overflow-hidden rounded-[32px] border border-[#66f4dc]/20" aria-live="polite">
+            <div class="stage-fx pointer-events-none absolute left-[-24px] top-[-24px] h-[360px] w-[240px] rotate-[-12deg] bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent_70%)] opacity-15 [clip-path:polygon(50%_0%,82%_0%,100%_100%,0_100%,18%_0%)]"></div>
+            <div class="stage-fx pointer-events-none absolute left-[calc(50%-120px)] top-[-24px] h-[360px] w-[240px] bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent_70%)] opacity-15 [clip-path:polygon(50%_0%,82%_0%,100%_100%,0_100%,18%_0%)]"></div>
+            <div class="stage-fx pointer-events-none absolute right-[-24px] top-[-24px] h-[360px] w-[240px] rotate-[12deg] bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent_70%)] opacity-15 [clip-path:polygon(50%_0%,82%_0%,100%_100%,0_100%,18%_0%)]"></div>
+
+            <div id="overlay" class="overlay absolute inset-0 z-30 grid place-items-center bg-[radial-gradient(circle_at_top,rgba(102,244,220,0.16),transparent_24%),rgba(4,11,19,0.78)] p-4 sm:p-6">
+              <div class="relative w-full max-w-[560px] rounded-[30px] border border-[#66f4dc]/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.09),rgba(255,255,255,0.04)),linear-gradient(135deg,rgba(102,244,220,0.1),rgba(255,116,183,0.1)),rgba(8,20,35,0.96)] px-5 py-7 text-center shadow-[0_20px_40px_rgba(0,0,0,0.34)] sm:px-8">
+                <div class="pointer-events-none absolute inset-3 rounded-[24px] border border-dashed border-white/15"></div>
+                <p class="text-xs font-black uppercase tracking-[0.26em] text-white/80">Spot the superstar</p>
+                <h2 id="overlay-title" class="heavy-shadow mt-3 text-[clamp(2.2rem,7vw,3.4rem)] leading-[0.95] font-black">
+                  Ready to catch Miku?
+                </h2>
+                <p id="overlay-text" class="mx-auto mt-4 max-w-[34rem] text-base leading-8 text-slate-100">
+                  Press start, then tap Miku every time she pops up on stage. Don't let her escape too often.
+                </p>
+                <button id="start-button" class="mt-6 inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 bg-[linear-gradient(135deg,#ffffff_0%,#c8ffe3_26%,#66f4dc_60%,#74d3ff_100%)] px-8 py-3 text-base font-black text-[#071323] shadow-[0_14px_26px_rgba(102,244,220,0.28),0_0_0_6px_rgba(102,244,220,0.08)] transition duration-150 hover:-translate-y-1 hover:scale-[1.02]" type="button">
+                  Start Game
+                </button>
+              </div>
+            </div>
+
+            <button id="miku" class="miku hidden" type="button" aria-label="Catch Hatsune Miku">
+              <img id="miku-image" src="./public/miku-run.png" alt="" />
+            </button>
+
+            <div class="stage-fx orb-drift pointer-events-none absolute left-[9%] top-[16%] h-24 w-24 rounded-full bg-[#66f4dc]/15 blur-md"></div>
+            <div class="stage-fx orb-drift pointer-events-none absolute right-[10%] top-[28%] h-36 w-36 rounded-full bg-[#ff74b7]/15 blur-md" style="animation-duration: 14s"></div>
+            <div class="stage-fx orb-drift pointer-events-none absolute bottom-[24%] left-[40%] h-20 w-20 rounded-full bg-[#74d3ff]/15 blur-md" style="animation-duration: 9s"></div>
+
+            <div class="stage-fx pointer-events-none absolute inset-0 z-10">
+              <span class="note-float absolute left-[13%] top-[18%] h-6 w-6 rounded-full text-[#ffe56a] opacity-25">
+                <span class="absolute right-[2px] top-[-10px] h-[22px] w-1.5 rounded-full bg-current"></span>
+                <span class="absolute right-[2px] top-[-10px] h-1.5 w-3.5 rounded-full bg-current"></span>
+              </span>
+              <span class="note-float absolute right-[16%] top-[22%] h-6 w-6 rounded-full text-[#ff74b7] opacity-25" style="animation-delay: 1s">
+                <span class="absolute right-[2px] top-[-10px] h-[22px] w-1.5 rounded-full bg-current"></span>
+                <span class="absolute right-[2px] top-[-10px] h-1.5 w-3.5 rounded-full bg-current"></span>
+              </span>
+              <span class="note-float absolute bottom-[30%] left-[22%] h-6 w-6 rounded-full text-[#74d3ff] opacity-25" style="animation-delay: 2s">
+                <span class="absolute right-[2px] top-[-10px] h-[22px] w-1.5 rounded-full bg-current"></span>
+                <span class="absolute right-[2px] top-[-10px] h-1.5 w-3.5 rounded-full bg-current"></span>
+              </span>
+              <span class="note-float absolute bottom-[36%] right-[24%] h-6 w-6 rounded-full text-[#66f4dc] opacity-25" style="animation-delay: 3s">
+                <span class="absolute right-[2px] top-[-10px] h-[22px] w-1.5 rounded-full bg-current"></span>
+                <span class="absolute right-[2px] top-[-10px] h-1.5 w-3.5 rounded-full bg-current"></span>
+              </span>
+            </div>
+
+            <div class="stage-fx pointer-events-none absolute bottom-[18px] left-[22px] right-[22px] z-10 flex h-24 items-end gap-2 max-[640px]:bottom-[14px] max-[640px]:left-[14px] max-[640px]:right-[14px] max-[640px]:h-[72px]">
+              <span class="bar-pulse h-[18%] min-w-[10px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#66f4dc)]"></span>
+              <span class="bar-pulse h-[25%] min-w-[10px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#74d3ff)]" style="animation-delay: 140ms"></span>
+              <span class="bar-pulse h-[20%] min-w-[10px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#fff8d8,#ffe56a)]" style="animation-delay: 280ms"></span>
+              <span class="bar-pulse h-[28%] min-w-[10px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#66f4dc)]" style="animation-delay: 420ms"></span>
+              <span class="bar-pulse h-[18%] min-w-[10px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#74d3ff)]" style="animation-delay: 180ms"></span>
+              <span class="bar-pulse h-[22%] min-w-[10px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#fff8d8,#ffe56a)]" style="animation-delay: 340ms"></span>
+              <span class="bar-pulse h-[19%] min-w-[10px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#66f4dc)]" style="animation-delay: 520ms"></span>
+              <span class="bar-pulse h-[14%] min-w-[10px] flex-1 rounded-t-full bg-[linear-gradient(180deg,#ffffff,#74d3ff)]" style="animation-delay: 620ms"></span>
+            </div>
+
+            <div class="stage-fx pointer-events-none absolute bottom-[108px] left-7 text-[clamp(3.1rem,6vw,5rem)] font-black tracking-[0.08em] text-white/10 max-[460px]:hidden">
+              01
+            </div>
+            <div class="stage-fx pointer-events-none absolute bottom-[108px] right-7 text-[clamp(3.1rem,6vw,5rem)] font-black tracking-[0.08em] text-white/10 max-[460px]:hidden">
+              39
+            </div>
+          </div>
+        </div>
+
+        <footer class="relative z-10 mt-4 flex flex-col gap-3 rounded-[24px] border border-white/10 bg-[linear-gradient(135deg,rgba(102,244,220,0.1),rgba(255,116,183,0.08)),rgba(16,28,45,0.9)] p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+          <p id="status-text" class="text-center text-sm font-bold text-slate-100 sm:max-w-[70%] sm:text-left">
+            Tap start to begin the chase.
+          </p>
+          <button id="restart-button" class="inline-flex min-h-11 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)),rgba(255,255,255,0.05)] px-6 py-2 text-sm font-black uppercase tracking-[0.08em] text-white transition duration-150 hover:-translate-y-1 hover:scale-[1.02]" type="button">
+            Restart
+          </button>
+        </footer>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
